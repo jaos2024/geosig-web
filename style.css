@@ -1,0 +1,395 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+/* Navegación */
+.navbar {
+    background-color: #0d1b2a; /* Azul muy oscuro, casi negro */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .logo h1 {
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navbar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar nav ul li a:hover {
+    color: #415a77;
+}
+
+/* Botón de Administrador */
+.btn-admin {
+    background-color: #778da9;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.btn-admin:hover {
+    background-color: #e0e1dd;
+    color: #0d1b2a !important;
+}
+
+/* Sección Hero (Principal) con Imagen de Fondo */
+.hero {
+    /* El linear-gradient crea una capa azul oscura semi-transparente sobre la imagen */
+    background-image: linear-gradient(rgba(27, 38, 59, 0.40), rgba(13, 27, 42, 0.60)), url('Fondo-Seguridad.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding: 120px 20px; /* Aumenté un poco el padding para que la imagen se luzca más */
+}
+
+.hero-content h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra sutil para despegar el texto del fondo */
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #e0e1dd;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.btn-principal {
+    background-color: #004e98;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-principal:hover {
+    background-color: #3a86ff;
+}
+
+/* Sección Servicios */
+.servicios {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.servicios h2 {
+    margin-bottom: 40px;
+    color: #0d1b2a;
+}
+
+.grid-servicios {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.tarjeta-servicio {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-top: 4px solid #1b263b;
+}
+
+.tarjeta-servicio h3 {
+    margin-bottom: 15px;
+    color: #1b263b;
+}
+
+/* Sección Contacto */
+.contacto {
+    background-color: #e0e1dd;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.contacto h2 {
+    margin-bottom: 10px;
+}
+
+.contacto p {
+    margin-bottom: 30px;
+}
+
+.formulario-contacto {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formulario-contacto input, .formulario-contacto textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Footer */
+footer {
+    background-color: #0d1b2a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+/* --- ESTILO DEL POPUP (TOAST) --- */
+/* --- ESTILO DEL POPUP (TOAST) CENTRADO --- */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    max-width: 90%; /* Evita que se salga de la pantalla en celulares */
+    text-align: center;
+    border-radius: 5px;
+    padding: 15px;
+    position: fixed;
+    z-index: 1000;
+    top: 30px;
+    left: 50%; /* Lo empuja a la mitad de la pantalla */
+    transform: translate(-50%, -20px); /* Lo centra perfectamente y lo sube un poco */
+    font-size: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 0.4s, transform 0.4s, visibility 0.4s;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, 0); /* Mantiene el centro y lo baja suavemente */
+}
+
+/* Colores según el resultado */
+.toast.exito {
+    background-color: #4cc9f0;
+    color: #0a0f18; /* Letra oscura para que resalte en el cian */
+    font-weight: bold;
+}
+
+.toast.error {
+    background-color: #ff4d4d;
+    color: white;
+    font-weight: bold;
+}
+@media (max-width: 600px) {
+    .navbar nav ul {
+        flex-direction: column; /* Pone los links uno abajo del otro */
+        align-items: center;
+        gap: 10px;
+    }
+    .navbar h1 {
+        font-size: 1.5rem;
+    }
+    .hero-content h2 {
+        font-size: 1.8rem; /* Achica el título principal en el celu */
+    }
+}
+/* --- MEJORAS PARA MÓVIL (GEOSIG) --- */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .navbar nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+        width: 100%;
+    }
+    .navbar nav ul li { width: 100%; text-align: center; }
+    .btn-admin { display: block; width: 100%; }
+}
+
+/* --- TOAST REFORZADO --- */
+.toast {
+    visibility: hidden;
+    min-width: 280px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    top: 50px; /* Arriba para que se vea bien en el celu */
+    transform: translateX(-50%);
+    font-weight: bold;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+.toast.show { visibility: visible; animation: fadein 0.5s; }
+.error-toast { background-color: #ff4d4d !important; border: 2px solid #b30000; }
+.exito-toast { background-color: #4CAF50 !important; border: 2px solid #2e7d32; }
+
+@keyframes fadein {
+    from { top: 0; opacity: 0; }
+    to { top: 50px; opacity: 1; }
+}
+/* --- ESTILOS PARA EL LOGO (GEOSIG) --- */
+.logo-img {
+    height: 60px; /* Ajustá este valor si lo querés más grande o chico */
+    width: auto;  /* Mantiene la proporción */
+    display: block;
+    transition: transform 0.3s;
+}
+
+.logo-img:hover {
+    transform: scale(1.05); /* Un pequeño efecto al pasar el mouse */
+}
+
+/* Ajuste para móviles (responsive) */
+@media (max-width: 600px) {
+    .navbar nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    /* ACÁ AGRANDAMOS EL LOGO EN MÓVIL */
+    .logo-img {
+        height: 120px; /* ¡Bien grande! */
+        margin: 0 auto 15px auto; /* Lo centra y le da aire abajo */
+    }
+
+    .navbar h1 {
+        font-size: 1.5rem;
+    }
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+}
+/* --- TAMAÑO DEL LOGO --- */
+.logo-img {
+    height: 90px; /* Tamaño ideal para la PC */
+    width: auto;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+/* --- NUESTRA EMPRESA --- */
+.nosotros {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.nosotros h2 {
+    color: #0d1b2a;
+    margin-bottom: 30px;
+}
+
+.nosotros-texto {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #444;
+    text-align: justify;
+}
+
+.nosotros-texto p {
+    margin-bottom: 15px;
+}
+
+/* --- CLIENTES --- */
+.clientes {
+    padding: 60px 20px;
+    background-color: #e0e1dd;
+    text-align: center;
+}
+
+.clientes h2 {
+    color: #0d1b2a;
+    margin-bottom: 40px;
+}
+
+.grid-clientes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tarjeta-cliente {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.tarjeta-cliente:hover {
+    transform: scale(1.03);
+}
+
+.tarjeta-cliente img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.tarjeta-cliente h4 {
+    color: #1b263b;
+    font-size: 1rem;
+}
+/* --- BOTÓN BORRAR (PANEL ADMIN) --- */
+.btn-borrar {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-borrar:hover {
+    background-color: #cc0000;
+}
