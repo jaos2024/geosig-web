@@ -5,6 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GEOSIG - Seguridad Privada</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos para el Popup */
+        .modal-oculto {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+        }
+        .modal-contenido {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .cerrar-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #555;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .cerrar-btn:hover {
+            color: #000;
+        }
+        /* Hacemos que la tarjeta parezca un botón clickeable */
+        .tarjeta-servicio {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .tarjeta-servicio:hover {
+            transform: scale(1.05); /* Efecto zoom al pasar el mouse */
+        }
+    </style>
 </head>
 <body>
     <div id="toast" class="toast"></div>
@@ -69,6 +113,7 @@
             <div class="tarjeta-servicio">
                 <h3>Tótems de Seguridad</h3>
                 <p>Tenemos como opción la instalación de Tótems de Seguridad Virtual en los lugares que permita el reemplazo de la seguridad Física, optimizando los costos del consorcio.</p>
+            <img src="totem.jpeg" alt="Tótem de Seguridad" style="display: block; margin-top: 20px; margin-left: auto; margin-right: auto; height: 180px; width: auto; border-radius: 5px;">
             </div>
             <div class="tarjeta-servicio">
                 <h3>Seguridad e Higiene Industrial</h3>
@@ -86,7 +131,7 @@
                 <h4>Policlínico Bancario, OSSSB</h4>
             </div>
             <div class="tarjeta-cliente">
-                <img src="iberia.jpg" alt="Canteras Argentinas S.A.">
+                <img src="canteras.png" alt="Canteras Argentinas S.A.">
                 <h4>Canteras Argentinas S.A.</h4>
             </div>
             <div class="tarjeta-cliente">
@@ -116,7 +161,13 @@
     <footer>
         <p>&copy; 2026 GEOSIG - Seguridad Privada. Todos los derechos reservados.</p>
     </footer>
-
+<div id="modal-servicio" class="modal-oculto">
+        <div class="modal-contenido">
+            <span id="cerrar-modal" class="cerrar-btn">&times;</span>
+            <h3 id="modal-titulo" style="color: #004e98; margin-bottom: 15px;">Título</h3>
+            <p id="modal-texto">Acá va a ir la información extra...</p>
+        </div>
+    </div>
     <script>
         const form = document.getElementById('formulario-contacto');
         const toast = document.getElementById('toast');
@@ -149,7 +200,52 @@
                 mostrarToast('Error de conexión con el servidor.', 'error');
             }
         });
+     // --- LOGICA DEL POPUP DE SERVICIOS ---
+        const modalServicio = document.getElementById('modal-servicio');
+        const btnCerrarModal = document.getElementById('cerrar-modal');
+        const tituloModal = document.getElementById('modal-titulo');
+        const textoModal = document.getElementById('modal-texto');
+        const tarjetas = document.querySelectorAll('.tarjeta-servicio');
+
+        // Acá podés escribir todo el texto largo que quieras para el popup de cada tarjeta
+        const detallesAmpliados = {
+            "Vigilancia Física": "Brindamos personal altamente capacitado, con cursos avalados y constante rotación. Implementamos controles de rondas por sistema de fichaje, asegurando que su objetivo esté cubierto y supervisado las 24 horas del día, los 365 días del año.",
+            "Monitoreo en Tiempo Real": "Nuestra central operativa cuenta con operadores experimentados trabajando 24/7. Ante cualquier alerta, coordinamos inmediatamente con las fuerzas de seguridad públicas y enviamos móviles propios para verificar el perímetro.",
+            "Cámaras Domo (Sin Cargo)": "Instalamos tecnología Full HD con visión nocturna, movimiento 360° y zoom óptico. Las grabaciones se respaldan automáticamente, asegurando que no se pierda ninguna evidencia vital para la seguridad del predio.",
+            "Tótems de Seguridad": "En los ingresos del objetivo se instalan cámaras y un dispositivo electrónico con tecnología de avanzada; el cual posee una pantalla y un sistema bidireccional de comunicación (audio y video) que le permitirá a quiénes ingresen al mismo o transiten en la zona , interactuar con el vigilador designado visualizándolo en la pantalla durante los horarios de prestación del servicio",
+            "Seguridad e Higiene Industrial": "Somos una empresa especializada en Seguridad e Higiene Industrial, comprometida con la prevención de riesgos laborales y el cumplimiento de la normativa vigente. Brindamos soluciones integrales orientadas a proteger la salud de los trabajadores, optimizar las condiciones de trabajo y reducir la siniestralidad en todo tipo de organizaciones. Nuestro equipo de profesionales cuenta con amplia experiencia en evaluación de riesgos, implementación de programas de seguridad, capacitaciones y asesoramiento técnico, garantizando un servicio confiable, eficiente y adaptado a las necesidades de cada cliente."
+        };
+
+        // Le damos vida a cada tarjeta
+        tarjetas.forEach(tarjeta => {
+            tarjeta.addEventListener('click', () => {
+                // Leemos el título de la tarjeta que el cliente tocó
+                const titulo = tarjeta.querySelector('h3').innerText;
+                
+                // Ponemos ese título en el popup
+                tituloModal.innerText = titulo;
+                
+                // Buscamos el texto largo en nuestro diccionario, si no lo encuentra, usa el texto cortito
+                textoModal.innerText = detallesAmpliados[titulo] || tarjeta.querySelector('p').innerText;
+                
+                // Mostramos el popup
+                modalServicio.style.display = 'block';
+            });
+        });
+
+        // Cerrar con la X
+        btnCerrarModal.onclick = () => {
+            modalServicio.style.display = 'none';
+        }
+
+        // Cerrar haciendo clic afuera del recuadro blanco
+        window.onclick = (e) => {
+            if (e.target == modalServicio) {
+                modalServicio.style.display = 'none';
+            }
+        }   
     </script>
+    
 </body>
 </html>
 
