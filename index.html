@@ -19,7 +19,7 @@
         }
         .modal-contenido {
             background-color: #fff;
-            margin: 10% auto;
+            margin: 5% auto; /* Lo bajé a 5% para que aproveche mejor el espacio arriba y abajo */
             padding: 30px;
             border-radius: 10px;
             width: 80%;
@@ -27,6 +27,8 @@
             position: relative;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             text-align: center;
+            max-height: 85vh; /* Le decimos que ocupe como máximo el 85% de la altura de la pantalla */
+            overflow-y: auto; /* Le pone una barrita de scroll interna si el texto es muy largo */
         }
         .cerrar-btn {
             position: absolute;
@@ -309,7 +311,28 @@
             "Monitoreo en Tiempo Real": "Nuestra central operativa cuenta con operadores experimentados trabajando 24/7. Ante cualquier alerta, coordinamos inmediatamente con las fuerzas de seguridad públicas y enviamos móviles propios para verificar el perímetro.",
             "Cámaras Domo (Sin Cargo)": "Instalamos tecnología Full HD con visión nocturna, movimiento 360° y zoom óptico. Las grabaciones se respaldan automáticamente, asegurando que no se pierda ninguna evidencia vital para la seguridad del predio.",
             "Tótems de Seguridad": "Instalamos en los accesos un dispositivo de avanzada con pantalla y comunicación bidireccional, permitiendo interactuar en vivo con el vigilador virtual.<br><br>• <b>Interacción Directa:</b> Botón físico para solicitar emergencia o asistencia inmediata.<br>• <b>Comunicación al Instante:</b> Enlace directo por audio y videollamada con nuestro Centro de Monitoreo.<br>• <b>Monitoreo Visual:</b> Cámaras integradas que transmiten en tiempo real para un control total del lugar.",
-            "Seguridad e Higiene Industrial": "Somos una empresa especializada en Seguridad e Higiene Industrial, comprometida con la prevención de riesgos laborales y el cumplimiento de la normativa vigente. Brindamos soluciones integrales orientadas a proteger la salud de los trabajadores, optimizar las condiciones de trabajo y reducir la siniestralidad en todo tipo de organizaciones. Nuestro equipo de profesionales cuenta con amplia experiencia en evaluación de riesgos, implementación de programas de seguridad, capacitaciones y asesoramiento técnico, garantizando un servicio confiable, eficiente y adaptado a las necesidades de cada cliente."
+            "Seguridad e Higiene Industrial": `
+                <p style="text-align: justify; margin-bottom: 15px;">Somos una empresa especializada en Seguridad e Higiene Industrial, enfocada en la prevención de riesgos laborales y el estricto cumplimiento de la normativa vigente.</p>
+                
+                <p style="text-align: left; color: #004e98; font-weight: bold; margin-bottom: 5px;">Brindamos soluciones integrales orientadas a:</p>
+                <ul style="text-align: left; margin-left: 20px; margin-bottom: 20px;">
+                    <li>Proteger la salud y el bienestar de los trabajadores.</li>
+                    <li>Optimizar las condiciones de trabajo.</li>
+                    <li>Reducir la siniestralidad en organizaciones de diversos sectores.</li>
+                </ul>
+
+                <img src="higiene.png" alt="Seguridad e Higiene" style="width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+
+                <p style="text-align: left; color: #004e98; font-weight: bold; margin-bottom: 5px;">Contamos con amplia experiencia en:</p>
+                <ul style="text-align: left; margin-left: 20px; margin-bottom: 20px;">
+                    <li>Evaluación y gestión de riesgos.</li>
+                    <li>Implementación de programas de seguridad.</li>
+                    <li>Capacitación del personal.</li>
+                    <li>Asesoramiento técnico especializado.</li>
+                </ul>
+
+                <p style="text-align: justify; font-style: italic;">Nuestro compromiso se basa en ofrecer un servicio confiable, eficiente y personalizado, adaptado a las necesidades específicas de cada cliente, contribuyendo al desarrollo de entornos laborales más seguros, productivos y sostenibles.</p>
+            `
         };
 
         // Le damos vida a cada tarjeta
