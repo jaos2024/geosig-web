@@ -67,15 +67,19 @@
         }
 
         /* Cuando la pantalla es chica (Celulares) */
-        @media (max-width: 768px) {
+       @media (max-width: 768px) {
             .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 20px;
-                position: sticky; /* Acá estaba el relative que nos arruinaba el plan */
+                display: flex !important;
+                flex-direction: row !important; /* Obliga a estar uno al lado del otro */
+                justify-content: space-between !important; /* Logo a la izquierda, rayitas a la derecha */
+                align-items: center !important;
+                flex-wrap: nowrap !important; /* Prohíbe terminantemente que se caiga al renglón de abajo */
+                padding: 10px 15px;
+                position: sticky;
                 top: 0;
                 z-index: 1000;
+                width: 100%;
+                box-sizing: border-box;
             }
             .logo-img {
                 max-height: 50px; /* Achicamos un poco el escudo para que quede fino */
@@ -104,6 +108,22 @@
             #nav-menu ul li {
                 margin: 15px 0;
             }
+        }
+        /* --- BOTÓN "VER DETALLES" PARA LAS TARJETAS --- */
+        .btn-tarjeta {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background-color: #004e98; 
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        /* Hacemos que el botón cambie un poquito de color si lo miran desde la PC */
+        .tarjeta-servicio:hover .btn-tarjeta {
+            background-color: #00366b;
         }
     </style>
 </head>
@@ -164,29 +184,34 @@
                 <h3>Vigilancia Física</h3>
                 <p>Personal altamente capacitado para la prevención de hechos delictivos, control de accesos y resguardo de instalaciones comerciales e industriales.</p>
                 <img src="comercios.jpg" style="display: block; margin-left: auto; margin-right: auto; margin-top: 15px; width: 80%; border-radius: 5px;">
+                <span class="btn-tarjeta">Ver detalles ＋</span>
             </div>
 
             <div class="tarjeta-servicio">
                 <h3>Monitoreo en Tiempo Real</h3>
                 <p>Los puestos de seguridad son monitoreados por cámaras desde nuestro centro de monitoreo en tiempo real, controlando y guiando el accionar de nuestro personal.</p>
-            <img src="monitoreo.png" style="display: block; margin-left: auto; margin-right: auto; margin-top: 15px; width: 95%; border-radius: 5px;">
-            </div>
+                <img src="monitoreo.png" style="display: block; margin-left: auto; margin-right: auto; margin-top: 15px; width: 95%; border-radius: 5px;">
+                <span class="btn-tarjeta">Ver detalles ＋</span>
+        </div>
 
             <div class="tarjeta-servicio">
                 <img src="camara.png" alt="Cámara Domo" style="display: block; margin: 0 auto 15px auto; width: 120px;">
                 <h3>Cámaras Domo (Sin Cargo)</h3>
                 <p>Las cámaras domos que faciliten el control serán colocadas <strong>sin costo adicional</strong> para la contratante. Poseen audio y alarmas accionables desde nuestro Centro.</p>
+                <span class="btn-tarjeta">Ver detalles ＋</span>
             </div>
 
             <div class="tarjeta-servicio">
                 <h3>Tótems de Seguridad</h3>
                 <p>Tenemos como opción la instalación de Tótems de Seguridad Virtual en los lugares que permita el reemplazo de la seguridad Física, optimizando los costos del consorcio.</p>
-            <img src="totem.jpeg" alt="Tótem de Seguridad" style="display: block; margin-top: 20px; margin-left: auto; margin-right: auto; height: 180px; width: auto; border-radius: 5px;">
-            </div>
+                <img src="totem.jpeg" alt="Tótem de Seguridad" style="display: block; margin-top: 20px; margin-left: auto; margin-right: auto; height: 180px; width: auto; border-radius: 5px;">
+                <span class="btn-tarjeta">Ver detalles ＋</span>
+        </div>
             <div class="tarjeta-servicio">
                 <h3>Seguridad e Higiene Industrial</h3>
                 <p>Asesoramiento integral, auditorías y control de normativas vigentes para garantizar un entorno de trabajo seguro y proteger la integridad de todos sus colaboradores.</p>
                 <img src="higiene.png" alt="Seguridad e Higiene Industrial" style="display: block; margin-top: 20px; margin-left: auto; margin-right: auto; width: 95%; border-radius: 5px;">
+                <span class="btn-tarjeta">Ver detalles ＋</span>
             </div>
         </div>
     </section>
