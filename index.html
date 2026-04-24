@@ -215,7 +215,7 @@
             "Vigilancia Física": "Brindamos personal altamente capacitado, con cursos avalados y constante rotación. Implementamos controles de rondas por sistema de fichaje, asegurando que su objetivo esté cubierto y supervisado las 24 horas del día, los 365 días del año.",
             "Monitoreo en Tiempo Real": "Nuestra central operativa cuenta con operadores experimentados trabajando 24/7. Ante cualquier alerta, coordinamos inmediatamente con las fuerzas de seguridad públicas y enviamos móviles propios para verificar el perímetro.",
             "Cámaras Domo (Sin Cargo)": "Instalamos tecnología Full HD con visión nocturna, movimiento 360° y zoom óptico. Las grabaciones se respaldan automáticamente, asegurando que no se pierda ninguna evidencia vital para la seguridad del predio.",
-            "Tótems de Seguridad": "En los ingresos del objetivo se instalan cámaras y un dispositivo electrónico con tecnología de avanzada; el cual posee una pantalla y un sistema bidireccional de comunicación (audio y video) que le permitirá a quiénes ingresen al mismo o transiten en la zona , interactuar con el vigilador designado visualizándolo en la pantalla durante los horarios de prestación del servicio",
+            "Tótems de Seguridad": "Instalamos en los accesos un dispositivo de avanzada con pantalla y comunicación bidireccional, permitiendo interactuar en vivo con el vigilador virtual.<br><br>• <b>Interacción Directa:</b> Botón físico para solicitar emergencia o asistencia inmediata.<br>• <b>Comunicación al Instante:</b> Enlace directo por audio y videollamada con nuestro Centro de Monitoreo.<br>• <b>Monitoreo Visual:</b> Cámaras integradas que transmiten en tiempo real para un control total del lugar.",
             "Seguridad e Higiene Industrial": "Somos una empresa especializada en Seguridad e Higiene Industrial, comprometida con la prevención de riesgos laborales y el cumplimiento de la normativa vigente. Brindamos soluciones integrales orientadas a proteger la salud de los trabajadores, optimizar las condiciones de trabajo y reducir la siniestralidad en todo tipo de organizaciones. Nuestro equipo de profesionales cuenta con amplia experiencia en evaluación de riesgos, implementación de programas de seguridad, capacitaciones y asesoramiento técnico, garantizando un servicio confiable, eficiente y adaptado a las necesidades de cada cliente."
         };
 
@@ -229,7 +229,7 @@
                 tituloModal.innerText = titulo;
                 
                 // Buscamos el texto largo en nuestro diccionario, si no lo encuentra, usa el texto cortito
-                textoModal.innerText = detallesAmpliados[titulo] || tarjeta.querySelector('p').innerText;
+                textoModal.innerHTML = detallesAmpliados[titulo] || tarjeta.querySelector('p').innerText;
                 
                 // Mostramos el popup
                 modalServicio.style.display = 'block';
